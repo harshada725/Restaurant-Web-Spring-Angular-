@@ -1,0 +1,44 @@
+<p class="h1 my-3">Edit Restaurants</p>
+<hr>
+
+
+<form #editRestaurantForm="ngForm" (ngSubmit)="editRestaurantSubmit(editRestaurantForm)">
+
+  <div class="mb-3">
+    <label for="restaurantId" class="form-label">Restaurant Id</label>
+        <select class="form-select" (change)="selectRestaurantId()" class="form-control"   placeholder="Enter Restaurant Id" Id="restaurantId" #restaurantId="ngModel" [(ngModel)]="restaurant.restaurantId">
+          
+          <option [value]="restaurant.restaurantId" *ngFor="let restaurant of restaurantCurdService.restaurants">{{restaurant.restaurantId}}</option>
+        </select>
+</div>
+
+
+
+
+  <div class="mb-3">
+    <label for="restaurantName" >Restaurant Name</label>
+    <input type="text" class="form-control"   placeholder="Enter Restaurant Name" name="restaurantName" #restaurantName="ngModel" [(ngModel)]="restaurant.restaurantName" required>
+    <small id="emailHelp" class="form-text text-danger" *ngIf="restaurantName.dirty && restaurantName.invalid">Restaurant Name can't be empty.</small>
+  </div>
+
+
+  <div class="mb-3">
+    <label for="resturantCuisine" >Restaurant Cuisine</label>
+    <input type="text" class="form-control"   placeholder="Enter Restaurant Cuisine" name="resturantCuisine" #resturantCuisine="ngModel" [(ngModel)]="restaurant.resturantCuisine" required>
+    <small id="emailHelp" class="form-text text-danger" *ngIf="resturantCuisine.dirty && resturantCuisine.invalid">Restaurant Cuisine can't be empty.</small>
+  </div>
+
+  <div class="mb-3">
+    <label for="resturantCity" >Restaurant City</label>
+    <input type="text" class="form-control"   placeholder="Enter Restaurant City" name="resturantCity" #resturantCity="ngModel" [(ngModel)]="restaurant.resturantCity" required>
+    <small id="emailHelp" class="form-text text-danger" *ngIf="resturantCity.dirty && resturantCity.invalid">Restaurant City can't be empty.</small>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="editRestaurantForm.pristine || editRestaurantForm.invalid">Submit</button>
+  <button class="btn btn-secondary ms-2" type="reset">Clear</button>
+</form>
+
+<div class="alert alert-success mt-3" role="alert" *ngIf="restaurantCurdService.restaurantEditedSuccess">
+  Restaurant edited sucessfully.
+</div>

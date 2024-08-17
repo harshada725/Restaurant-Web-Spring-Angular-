@@ -1,0 +1,12 @@
+<p class="h1 my-3">Restaurants</p>
+<hr>
+<div class="d-flex flex-wrap">
+  <div class="card col-2 m-2" *ngFor="let restaurant of restaurantCurdService.restaurants">
+    <div class="card-body">
+      <h5 class="card-title text-primary">{{restaurant.restaurantName}}</h5>
+      <hr>
+      <h6 class="card-subtitle mb-2 text-body-secondary">{{restaurant.resturantCuisine}}</h6>
+      <p class="card-text">{{restaurant.resturantCity}}</p>
+    </div>
+  </div>
+</div>

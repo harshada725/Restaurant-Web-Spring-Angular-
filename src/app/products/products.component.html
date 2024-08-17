@@ -1,0 +1,5 @@
+<p class=" h2 mt-3">Products</p>
+<hr>
+<ul class="list-group">
+  <a class="list-group-item" *ngFor="let product of products" routerLink="/details/{{product}}">{{product}}</a>
+</ul>

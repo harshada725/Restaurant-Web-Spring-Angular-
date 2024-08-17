@@ -1,0 +1,24 @@
+<p class="h1 my-3">Delete Restaurants</p>
+<hr>
+
+  <form class="row row-cols-lg-auto g-3 align-items-center" #deleteRestaurantForm="ngForm" (ngSubmit)="deleteRestaurantSubmit(deleteRestaurantForm)">
+
+  <div class="col-12">
+    <label for="inlineFormSelect" class="form-label">Select Restaurant Id</label>
+  </div>
+
+  <div class="col-12">
+   
+    <select class="form-select" id="inlineFormSelect"  class="form-control" name="restaurantId"  placeholder="Enter Restaurant Id" Id="restaurantId" #restaurantId="ngModel" [(ngModel)]="restaurant.restaurantId">
+          
+      <option [value]="restaurant.restaurantId" *ngFor="let restaurant of restaurantCurdService.restaurants">{{restaurant.restaurantId}}</option>
+      
+      
+    </select>
+  </div>
+
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary"[disabled]="deleteRestaurantForm.pristine || deleteRestaurantForm.invalid">Submit</button>
+  </div>
+</form>
